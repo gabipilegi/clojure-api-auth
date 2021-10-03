@@ -6,7 +6,7 @@
 
 (defroutes auth-routes
   (GET "/users/:email" request
-       (-> handle/users
+       (-> handle/user
            middlewares/check-email-owner
            middlewares/auth-middleware
            middlewares/wrap-jwt-authentication-middleware))

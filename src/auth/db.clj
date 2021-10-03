@@ -7,11 +7,12 @@
   [user]
   (dissoc user :password))
 
-(defn all-users
-  []
-  (->> @db
-       :users
-       (map (fn [[k v]] (sanitized-user v)))))
+(defn user
+  [email]
+  (-> @db
+      :users
+      (get email)
+      sanitized-user))
 
 (defn- new-user
   [{password :password :as user}]
@@ -32,8 +33,3 @@
   (let [{saved-password :password :as user} (get-in @db [:users email])]
     (when (check login-password saved-password)
       (sanitized-user user))))
-
-(comment
-  @db
-  (get-user-by-credentials {:email "gabbo@email.com"
-                            :password "mypassword"}))

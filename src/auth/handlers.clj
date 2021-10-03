@@ -16,8 +16,7 @@
                         :token (jwt/sign user config/jwt-secret)}}
     {:status 404}))
 
-(defn users
-  [request]
-  (clojure.pprint/pprint request)
-  (let [users (db/all-users)]
-    {:status 200 :body (or users {})}))
+(defn user
+  [{{email :email} :params :as request}]
+  (let [user (db/user email)]
+    {:status 200 :body (or user {})}))
