@@ -1,0 +1,6 @@
+{:deps {ring/ring-core          {:mvn/version "1.9.4"}
+        ring/ring-jetty-adapter {:mvn/version "1.9.4"}
+        buddy/buddy-auth        {:mvn/version "3.0.1"}
+        buddy/buddy-hashers     {:mvn/version "1.6.0"}
+        compojure/compojure     {:mvn/version "1.6.2"}
+        metosin/muuntaja        {:mvn/version "0.6.8"}}}
